@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <title>Interzsar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-900">
+
+<!-- ================= HEADER ================= -->
+<header class="fixed top-0 left-0 w-full z-50 
+               bg-white/60 backdrop-blur-lg 
+               border-b border-white/20">
+
+  <div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+    <h1 class="text-xl font-semibold">Interzsar</h1>
+
+    <nav class="hidden md:flex space-x-10 text-sm font-medium">
+      <a href="#" class="hover:text-black transition">Home</a>
+      <a href="#products" class="hover:text-black transition">Collections</a>
+      <a href="#contact" class="hover:text-black transition">Contact</a>
+    </nav>
+
+    <button id="menu-btn" class="md:hidden focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+           viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<div class="pt-24"></div>
+
+<!-- ================= HERO ================= -->
+<section class="text-center py-20 px-6 bg-white">
+  <h2 class="text-4xl md:text-5xl font-bold mb-6">
+    Elevate Your Everyday Style
+  </h2>
+  <p class="text-gray-600 max-w-2xl mx-auto mb-8">
+    Discover premium essentials crafted for modern living.
+  </p>
+  <a href="https://interszar.in/"
+     class="bg-black text-white px-8 py-3 rounded-full hover:bg-gray-800 transition">
+    Shop Collection
+  </a>
+</section>
+
+<!-- ================= PRODUCTS ================= -->
+<section id="products" class="py-20 px-6 max-w-7xl mx-auto">
+  <h3 class="text-3xl font-semibold text-center mb-12">
+    Featured Product
+  </h3>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 md:place-items-center">
+
+    <a href="https://interszar.in/products/shoe-cleaning-foam"
+       target="_blank"
+       class="group bg-white rounded-2xl shadow hover:shadow-xl transition p-6
+              md:max-w-sm w-full text-center">
+
+      <img src="WhatsApp Image 2026-02-25 at 10.51.53 AM.jpeg"
+           class="rounded-xl mb-6 mx-auto">
+
+      <h4 class="font-semibold text-xl group-hover:underline mb-2">
+        Shoe Cleaner
+      </h4>
+
+      <p class="text-gray-600 text-lg mb-4">₹199</p>
+
+      <span class="inline-block bg-black text-white px-6 py-2 rounded-full text-sm">
+        View Product
+      </span>
+    </a>
+
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="py-20 px-6 bg-white text-center">
+  <h3 class="text-3xl font-semibold mb-6">
+    Contact Us
+  </h3>
+
+  <p class="text-gray-600 mb-10">
+    Have questions? Call us directly or chat on WhatsApp.
+  </p>
+
+  <div class="flex flex-col sm:flex-row justify-center gap-6">
+
+    <!-- Call Button -->
+    <a href="tel:+919876543210"
+       class="bg-black text-white px-8 py-3 rounded-full hover:bg-gray-800 transition inline-block">
+       📞 Call Now
+    </a>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/919876543210?text=Hi%20I%20am%20interested%20in%20your%20Shoe%20Cleaner"
+       target="_blank"
+       class="bg-green-500 text-white px-8 py-3 rounded-full hover:bg-green-600 transition inline-block">
+       💬 Chat on WhatsApp
+    </a>
+
+  </div>
+</section>
+
+<!-- ================= OVERLAY ================= -->
+<div id="overlay"
+     class="fixed inset-0 bg-black/30 backdrop-blur-sm 
+            opacity-0 invisible transition duration-300 z-40">
+</div>
+
+<!-- ================= MOBILE MENU ================= -->
+<div id="mobile-menu"
+     class="fixed top-0 right-0 h-full w-72 
+            bg-white/30 backdrop-blur-xl 
+            border-l border-white/20 
+            shadow-2xl 
+            transform translate-x-full 
+            transition duration-300 
+            z-50 p-8">
+
+  <div class="flex justify-end mb-10">
+    <button id="close-btn">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+           viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <nav class="flex flex-col space-y-8 text-xl font-semibold">
+    <a href="#">Home</a>
+    <a href="#products">Collections</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</div>
+
+<!-- ================= SCRIPT ================= -->
+<script>
+  const menuBtn = document.getElementById('menu-btn');
+  const closeBtn = document.getElementById('close-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const overlay = document.getElementById('overlay');
+  const menuLinks = mobileMenu.querySelectorAll('a');
+
+  function openMenu() {
+    mobileMenu.classList.remove('translate-x-full');
+    overlay.classList.remove('opacity-0', 'invisible');
+  }
+
+  function closeMenu() {
+    mobileMenu.classList.add('translate-x-full');
+    overlay.classList.add('opacity-0', 'invisible');
+  }
+
+  menuBtn.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  overlay.addEventListener('click', closeMenu);
+  menuLinks.forEach(link => link.addEventListener('click', closeMenu));
+</script>
+
+</body>
+</html>
